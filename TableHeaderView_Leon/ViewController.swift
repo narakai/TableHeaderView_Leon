@@ -22,11 +22,11 @@ class ViewController: UIViewController {
     let tableView: UITableView = {
         let tableView = UITableView(frame: YHRect, style: .plain)
         tableView.tableFooterView = UIView()
-        tableView.showsVerticalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = true
         //下面两句必不可少，否则会出现第一次加载时位置不对的情况
         tableView.contentInset.top = HeadViewHeight
         tableView.contentOffset = CGPoint(x: 0.0, y: -HeadViewHeight)
-//        tableView.scrollIndicatorInsets.top = HeadViewHeight//右边指示器的位置
+        tableView.scrollIndicatorInsets.top = HeadViewHeight//右边指示器的位置
         return tableView
     }()
 
