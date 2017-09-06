@@ -108,10 +108,14 @@ extension ViewController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsety = scrollView.contentOffset.y + scrollView.contentInset.top
+        var offsety = scrollView.contentOffset.y + scrollView.contentInset.top
         if offsety <= 0 {
-            headView.frame = CGRect(x: 0.0, y: 0.0, width: YHWidth, height: HeadViewHeight - offsety)
+            offsety = 0
+            tableView.bounces = false
+            headView.frame = CGRect(x: 0.0, y: 0.0, width: YHWidth, height: HeadViewHeight)
+            headView.alpha = 1
         } else {
+            tableView.bounces = true
             let height = (HeadViewHeight - offsety) <= 0.0 ? 0.0 : (HeadViewHeight - offsety)
             headView.frame = CGRect(x: 0.0, y: 0.0, width: YHWidth, height: height)
             headView.alpha = height / HeadViewHeight
